@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base resets ─────────────────────────────────────────── */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #0a0a09;
+    color: #e8e4dc;
+    overscroll-behavior: none;
+    overflow: hidden;
+  }
+
+  /*
+   * Prevent iOS auto-zoom on input focus.
+   * Must be >= 16px. The !important beats Tailwind's text-base (1rem = 16px)
+   * but we keep it as an explicit guard.
+   */
+  input, textarea {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  /* Hide scrollbars — feel native on mobile, subtle on desktop */
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  ::selection {
+    background-color: rgba(196, 168, 130, 0.25);
+    color: #e8e4dc;
+  }
+}
+
+/* ─── Custom utilities ─────────────────────────────────────── */
+@layer utilities {
+  /*
+   * text-clamp / text-clamp-1: line-clamp for note list entries.
+   * Not yet in Tailwind v3 core for arbitrary values so defined here.
+   */
+  .text-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .text-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+}
